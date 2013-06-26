@@ -7,7 +7,7 @@
 path should be a valid java.io.File object."
   [path]
   (let [dir (file-seq path)
-        is-temp-file (fn [file-name] (and (.isFile file-name) (.endsWith (.getName file-name) "~")))]
+        is-temp-file (fn [file-name] (and (. file-name isFile) (.endsWith (.getName file-name) "~")))]
     (map (memfn delete) (filter is-temp-file dir))))
 
 (defn -main
